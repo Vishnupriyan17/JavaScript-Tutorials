@@ -137,3 +137,215 @@ switch(1)
     default:
         console.log("nothing")
 }
+
+
+//TERNARY OPERATOR
+
+let num = 123;
+let ans = num > 1000 ? true:false;
+console.log(ans)
+
+
+let player = "sissor";
+let comp = "stone";
+
+let res = 
+    player === comp ? "tie"
+        :player === "paper" && comp === "stone" ? "Player Wins!" 
+            : player === "paper" && comp === "sissor" ? "Computer Wins!" 
+                : player === "stone" && comp === "sissor" ? "Player Wins!"
+                    :player === "stone" && comp === "paper" ? "Computer Wins!"
+                        :player === "sissor" && comp === "stone" ? "Computer Wins!"
+                            :player === "sissor" && comp === "paper" ? "Player Wins!":"Computer Wins!"
+console.log(res)
+
+
+//user input
+
+// let myName = prompt("Enter Your Name")
+// if(myName)
+// {
+//     console.log(myName ?? "You didn't enter the name")
+// }
+// else{
+//     console.log("you didn't enter your name")
+// }
+// console.log(myName.trim().length);
+
+
+// function input ()
+// {
+//     let play = prompt("Enter your choice ROCK , PAPER , SICISSOR")
+//     if(!play)
+//     {
+//         console.log(play ?? "Please enter your choice")
+//     }
+//     else{
+//         let compu = arrchoice[Math.floor(Math.random()*3)]
+//         process(play,compu)
+//     }
+// }
+//         const arrchoice = ["rock","paper","sicissor"]
+//         let playGame = confirm("shall we play")
+//         playGame ? input() : "Ok ThankYou"
+
+//         function process(play,compu)
+//         {
+//                 let result =
+//                 play === compu ? "tie"
+//                     :play === "paper" && compu === "rock" ? `player: ${play}\ncomputer: ${compu}\nPlayer Wins!` 
+//                         : play === "paper" && compu === "sicissor" ? `player: ${play}\ncomputer: ${compu}\nComputer Wins!` 
+//                             : play === "rock" && compu === "sicissor" ? `player: ${play}\ncomputer: ${compu}\nPlayer Wins!`
+//                                 :play === "rock" && compu === "paper" ? `player: ${play}\ncomputer: ${compu}\nComputer Wins!`
+//                                     :play === "sicissor" && compu === "rock" ? `player: ${play}\ncomputer: ${compu}\nComputer Wins!`
+//                                         :play=== "sicissor" && compu === "paper" ? `player: ${play}\ncomputer: ${compu}\nPlayer Wins!`:`Correctly enter your choice`
+//                                         console.log(compu)
+//                                         alert(result);
+//                                         let playagain = confirm("play Again")
+//                                         playagain ? input():alert("ok thanks for playing")
+//             }
+
+
+
+
+//arrays
+
+const arr = [];
+arr[0] = "vishnu"
+arr[1] = "priyan"
+arr[2] = 17
+arr[3] = 2003
+
+console.log(arr)
+arr.push("mk")
+console.log(arr)
+arr.pop()
+console.log(arr)
+arr.unshift(9)
+console.log(arr)
+arr.shift()
+console.log(arr)
+// delete arr[2]
+// console.log(arr)
+// //it gives undefined value
+//so we use "splice"
+
+arr.splice(2,1)
+console.log(arr)
+arr.splice(2,0,"september")
+console.log(arr)
+const myArr = arr.slice(0,3)
+console.log(myArr)
+const Arr = arr.join()
+console.log(Arr)
+console.log(Arr.split(','))
+const narr = [...myArr,...arr]   //spread operator
+console.log(narr)
+
+
+
+//objects
+//key value pairs
+
+
+//obj declaration
+const myObj = {name:"Vishnu",
+    dob:"17/09/2003",
+    door:6,
+    number:"12345",
+    gender:{
+     boy:true,
+     girl:false
+     },
+ num : ["1","2","3"],
+ action: function()
+ {
+     return `Your Name ${this.name}`;//call a particular value in a function
+ }};
+ console.log(myObj.name,myObj.number,myObj.num[0],myObj.gender.boy,myObj.action())
+
+const anObj = Object.create(myObj); //inherit the properties of another obj to this obj
+anObj.wheels = 4;  //add the properties extra
+console.log(anObj.wheels)
+//modify the property of parent obj in child obj
+anObj.door = 5;
+console.log(anObj.door);
+
+//to get the keys
+console.log(Object.keys(myObj));
+console.log(Object.values(myObj));
+
+//forin loop in object
+for(let ite in myObj)
+{
+    console.log(`${ite},${myObj[ite]}`);
+}
+// to check particular property is there or not
+console.log(myObj.hasOwnProperty("vehicle"));
+
+//destructuring the object
+const{name:MyName} = myObj;
+console.log(MyName);
+
+function details({name})
+{
+    return name;
+}
+console.log(details(myObj));
+
+
+//classes
+
+class Pizza { 
+    constructor (sizePizza)
+    {
+        //this.size = "medium"; this is directly assigning the values
+        this.size = sizePizza;
+        this.toppings = "olives";
+    }
+    getToppings()
+    {
+        return this.toppingsPizza;
+    }
+    setToppings(toppingsPizza)
+    {
+        this.toppings = toppingsPizza;
+    }
+}
+class anotherPizza extends Pizza{
+    constructor(sizePizza)
+    {
+        super(sizePizza);
+        this.type = "Margarita";
+    }
+    slice()
+    {
+        console.log(`our ${this.type} ${this.size} ${this.toppings} pizza has 8 slices`)
+    }
+}
+const piz = new anotherPizza("small");
+//piz.toppingsPizza = "sauccee"
+piz.setToppings("sauccee");
+piz.slice();
+
+
+//Error handling
+
+const makeError = () =>
+{
+    try{
+        num = prompt("enter your name");
+        if(num > 10)
+        {
+        throw new Error ("Entered number is in Out of range");
+        }
+        else{
+            console.log(num ?? "you didn't entered a number between 1 to 10");
+        }
+    }
+    catch(err)
+    {
+        console.error(err.stack);
+    }u
+};
+makeError();
